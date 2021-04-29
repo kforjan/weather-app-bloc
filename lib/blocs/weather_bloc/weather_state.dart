@@ -19,11 +19,13 @@ class LocationError extends WeatherState {
 }
 
 class WeatherLoading extends WeatherState {
-  final Position position;
-  const WeatherLoading(this.position);
+  const WeatherLoading();
 }
 
-class WeatherLoaded extends WeatherState {}
+class WeatherLoaded extends WeatherState {
+  final Weather weather;
+  const WeatherLoaded(this.weather);
+}
 
 class WeatherError extends WeatherState {
   final String message;
