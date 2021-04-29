@@ -43,10 +43,10 @@ class HomeScreen extends StatelessWidget {
                 },
                 builder: (context, state) {
                   if (state is WeatherInitial) {
-                    return Text('initial');
+                    return _buildInitial();
                   } else if (state is LocationLoading ||
                       state is WeatherLoading) {
-                    return CircularProgressIndicator();
+                    return _buildLoading();
                   } else if (state is WeatherLoaded) {
                     return Text(state.weather.temperature);
                   } else {
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                getWeather(context);
+                _getWeather(context);
               },
               child: Text("How's the weather?"),
             )
@@ -67,7 +67,21 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void getWeather(BuildContext context) {
+  Widget _buildInitial() {
+    return Text('Get the current weather on your location now!');
+  }
+
+  Widget _buildLoading() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget _buildWeatherDisplay() {
+    return Container();
+  }
+
+  void _getWeather(BuildContext context) {
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     weatherBloc.add(GetWeather());
   }
