@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_bloc/locator.dart';
 import 'package:weather_app_bloc/ui/home_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setup();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
