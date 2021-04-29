@@ -26,6 +26,7 @@ dependencies:
   bloc: ^7.0.0
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.0.0
+  geolocator: ^7.0.3
 
 dev_dependencies:
   flutter_test:
