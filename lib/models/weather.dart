@@ -13,7 +13,6 @@ class Weather {
 
   factory Weather.fromJSON(Map<String, dynamic> json) {
     var temperature = json['current']['temp'];
-    print(temperature);
     var temperatureString = (temperature - 272.15).toStringAsFixed(1);
     final weather = json['current']['weather'][0]['main'];
     final weatherIcon = json['current']['weather'][0]['icon'];
