@@ -19,13 +19,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     WeatherEvent event,
   ) async* {
     Position position;
-    if (event is WeatherEvent) {
+    if (event is GetWeather) {
       yield LocationLoading();
       if (await Geolocator.isLocationServiceEnabled() == false) {
         Geolocator.requestPermission();
       }
       try {
-        position = await Geolocator.getLastKnownPosition();
+        position = await Geolocator.getCurrentPosition();
         yield WeatherLoading();
       } catch (e) {
         yield LocationError('Location error');

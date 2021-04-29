@@ -49,13 +49,15 @@ class HomeScreen extends StatelessWidget {
                 } else if (state is WeatherLoaded) {
                   return Text('done');
                 } else {
-                  return Text('initial');
+                  return Text('error');
                 }
               },
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              getWeather(context);
+            },
             child: Text("How's the weather?"),
           )
         ],

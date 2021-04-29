@@ -12,7 +12,10 @@ class WeatherApi {
     try {
       final response = await _restClient.get(
           'https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}&exclude=hourly,daily,minutely&appid=${key}');
-      return Weather.fromJSON(response);
+
+      final weather = Weather.fromJSON(response);
+      print(weather);
+      return weather;
     } catch (e) {
       throw e;
     }

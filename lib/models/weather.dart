@@ -12,10 +12,10 @@ class Weather {
   String watherIcon;
 
   factory Weather.fromJSON(Map<String, dynamic> json) {
-    var temperature = double.parse(json['current']['temp']);
+    var temperature = json['current']['temp'];
     var temperatureString = ((temperature - 32) * (5 / 9)).toStringAsFixed(1);
-    final weather = json['current']['weather']['main'];
-    final weatherIcon = json['current']['weather']['icon'];
+    final weather = json['current']['weather'][0]['main'];
+    final weatherIcon = json['current']['weather'][0]['icon'];
     return Weather(
       temperature: temperatureString,
       weather: weather,
