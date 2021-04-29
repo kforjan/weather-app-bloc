@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_bloc/blocs/weather_bloc/weather_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -21,6 +23,36 @@ class HomeScreen extends StatelessWidget {
         children: [
           Container(
             height: 500,
+            child: BlocConsumer<WeatherBloc, WeatherState>(
+              listener: (context, state) {
+                if (state is WeatherError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.message),
+                    ),
+                  );
+                }
+                if (state is LocationError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.message),
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state is WeatherInitial) {
+                  return Text('initial');
+                } else if (state is LocationLoading ||
+                    state is WeatherLoading) {
+                  return CircularProgressIndicator();
+                } else if (state is WeatherLoaded) {
+                  return Text('done');
+                } else {
+                  return Text('initial');
+                }
+              },
+            ),
           ),
           ElevatedButton(
             onPressed: () {},
@@ -29,5 +61,10 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void getWeather(BuildContext context) {
+    final weatherBloc = BlocProvider.of<WeatherBloc>(context);
+    weatherBloc.add(GetWeather());
   }
 }
