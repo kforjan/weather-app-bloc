@@ -19,48 +19,50 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 500,
-            child: BlocConsumer<WeatherBloc, WeatherState>(
-              listener: (context, state) {
-                if (state is WeatherError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(state.message),
-                    ),
-                  );
-                }
-                if (state is LocationError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(state.message),
-                    ),
-                  );
-                }
-              },
-              builder: (context, state) {
-                if (state is WeatherInitial) {
-                  return Text('initial');
-                } else if (state is LocationLoading ||
-                    state is WeatherLoading) {
-                  return CircularProgressIndicator();
-                } else if (state is WeatherLoaded) {
-                  return Text('done');
-                } else {
-                  return Text('error');
-                }
-              },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              child: BlocConsumer<WeatherBloc, WeatherState>(
+                listener: (context, state) {
+                  if (state is WeatherError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                      ),
+                    );
+                  }
+                  if (state is LocationError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state is WeatherInitial) {
+                    return Text('initial');
+                  } else if (state is LocationLoading ||
+                      state is WeatherLoading) {
+                    return CircularProgressIndicator();
+                  } else if (state is WeatherLoaded) {
+                    return Text(state.weather.temperature);
+                  } else {
+                    return Text('error');
+                  }
+                },
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              getWeather(context);
-            },
-            child: Text("How's the weather?"),
-          )
-        ],
+            ElevatedButton(
+              onPressed: () {
+                getWeather(context);
+              },
+              child: Text("How's the weather?"),
+            )
+          ],
+        ),
       ),
     );
   }

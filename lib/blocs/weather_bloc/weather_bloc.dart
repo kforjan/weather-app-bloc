@@ -28,13 +28,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         position = await Geolocator.getCurrentPosition();
         yield WeatherLoading();
       } catch (e) {
-        yield LocationError('Location error');
+        yield LocationError('GPS location error');
       }
       try {
         final weather = await locator<WeatherApi>().getWeather(position);
         yield WeatherLoaded(weather);
       } catch (e) {
-        yield WeatherError('Weather error');
+        yield WeatherError('Internet connection error');
       }
     }
   }
