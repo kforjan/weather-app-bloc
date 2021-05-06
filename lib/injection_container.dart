@@ -5,5 +5,6 @@ import 'package:weather_app_bloc/data/network/rest_client.dart';
 final locator = GetIt.instance;
 
 void setup() {
-  locator.registerLazySingleton(() => WeatherApi(RestClient()));
+  locator.registerLazySingleton(() => WeatherApi(locator()));
+  locator.registerLazySingleton(() => RestClient());
 }

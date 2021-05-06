@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_bloc/blocs/weather_bloc/weather_bloc.dart';
-import 'package:weather_app_bloc/locator.dart';
+import 'package:weather_app_bloc/injection_container.dart' as di;
 import 'package:weather_app_bloc/ui/home_screen.dart';
 
 void main() {
-  setup();
+  di.setup();
   runApp(MyApp());
 }
 

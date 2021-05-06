@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:weather_app_bloc/data/network/apis/weather_api.dart';
 import 'package:weather_app_bloc/models/weather.dart';
 
-import '../../locator.dart';
+import '../../injection_container.dart';
 
 part 'weather_event.dart';
 part 'weather_state.dart';
