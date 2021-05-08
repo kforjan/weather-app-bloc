@@ -8,11 +8,11 @@ This application uses business logic component (BLoC) as a method of state manag
 
 ## Used packages
 
-* [bloc](https://pub.dev/packages/bloc)
-* [flutter_bloc](https://pub.dev/packages/flutter_bloc)
-* [geolocator](https://pub.dev/packages/geolocator)
-* [get_it](https://pub.dev/packages/get_it)
-* [http](https://pub.dev/packages/http)
+* [bloc](https://pub.dev/packages/bloc) &nbsp; - &nbsp; state management
+* [flutter_bloc](https://pub.dev/packages/flutter_bloc) &nbsp; - &nbsp; widgets for bloc implementation
+* [geolocator](https://pub.dev/packages/geolocator) &nbsp; - &nbsp; platform specific location services 
+* [get_it](https://pub.dev/packages/get_it) &nbsp; - &nbsp; service locator for dependency injection
+* [http](https://pub.dev/packages/http) &nbsp; - &nbsp; making HTTP requests
 
 ## Features
 
