@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'LocalWeather',
       home: BlocProvider(
-        create: (context) => WeatherBloc(),
+        create: (context) => di.locator<WeatherBloc>(),
         child: HomeScreen(),
       ),
     );
